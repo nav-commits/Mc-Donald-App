@@ -1,13 +1,13 @@
-import { View, StatusBar, StyleSheet, Image } from 'react-native';
+import { View, StatusBar, Image } from 'react-native';
 import TopBar from '../Molecules/TopBar';
 import Title from '../Atoms/Title';
 import Card from '../Molecules/Card';
 import Button from '../Atoms/Button';
 
-export default function Home() {
+
+export default function Home({navigation}) {
     return (
         <View>
-            {/* need an image in here */}
             <StatusBar backgroundColor={'grey'} />
             <TopBar />
             <Title title='Menu' />
@@ -25,7 +25,8 @@ export default function Home() {
                         top={100}
                         left={10}
                         backgroundColor='#ffbc0d'
-                          width={120}
+                        width={120}
+                        onPress={() => navigation.navigate('Order')}
                     />
                 }
             />
@@ -51,4 +52,3 @@ export default function Home() {
         </View>
     );
 }
-

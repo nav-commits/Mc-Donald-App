@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-export default function Button({ position, top, left, title, backgroundColor, width }) {
+export default function Button({ position, top, left, title, backgroundColor, width , onPress}) {
     return (
         <TouchableOpacity
+            onPress={onPress}
             style={{
                 backgroundColor: backgroundColor,
                 elevation: 8,
@@ -26,7 +27,6 @@ const styles = StyleSheet.create({
     appButtonText: {
         fontSize: 12,
         color: '#fff',
-        
         alignSelf: 'center',
         color: 'black',
     },
