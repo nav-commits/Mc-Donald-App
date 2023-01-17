@@ -7,7 +7,7 @@ import Button from '../Atoms/Button';
 export default function Home({ navigation }) {
     return (
         <ScrollView style={styles.scrollView}>
-            <View style={{ backgroundColor: 'white' }}>
+            <View style={{ backgroundColor: 'white', }}>
                 <StatusBar backgroundColor={'grey'} />
                 <TopBar
                     content={
@@ -18,7 +18,7 @@ export default function Home({ navigation }) {
                     }
                     alignItems='center'
                 />
-                <Title title='Menu' />
+                <Title title='Menu' paddingLeft={30} paddingTop={30} size={20} />
                 <Card
                     img={
                         <Image
@@ -38,7 +38,7 @@ export default function Home({ navigation }) {
                         />
                     }
                 />
-                <Title title='My Offers' />
+                <Title title='My Offers' paddingLeft={30} paddingTop={30} size={20} />
                 <Card
                     img={
                         <Image
@@ -57,7 +57,7 @@ export default function Home({ navigation }) {
                         />
                     }
                 />
-                <Title title="What's New" />
+                <Title title="What's New" paddingLeft={30} paddingTop={30} size={20} />
                 <Card
                     img={
                         <Image

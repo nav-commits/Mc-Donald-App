@@ -1,15 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text} from 'react-native';
 
-export default function Title({ title }) {
-    return <Text style={styles.titleText}>{title}</Text>;
+export default function Title({ title, size, paddingLeft, paddingTop }) {
+    return (
+        <Text
+            style={{
+                fontSize: size,
+                fontWeight: 'bold',
+                paddingLeft: paddingLeft,
+                paddingTop: paddingTop,
+            }}
+        >
+            {title}
+        </Text>
+    );
 }
 
-const styles = StyleSheet.create({
-    titleText: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        paddingLeft: 30,
-        paddingTop: 20
-    },
-});
