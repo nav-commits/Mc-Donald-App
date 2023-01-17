@@ -7,9 +7,17 @@ import Button from '../Atoms/Button';
 export default function Home({ navigation }) {
     return (
         <ScrollView style={styles.scrollView}>
-            <View style={{backgroundColor:'white'}}>
-                <StatusBar backgroundColor={'grey'}  />
-                <TopBar content={  <Image source={require('../../../assets/McDonald.png')} style={{width: 55, height: 28}} />} alignItems='center' />
+            <View style={{ backgroundColor: 'white' }}>
+                <StatusBar backgroundColor={'grey'} />
+                <TopBar
+                    content={
+                        <Image
+                            source={require('../../../assets/McDonald.png')}
+                            style={{ width: 55, height: 28 }}
+                        />
+                    }
+                    alignItems='center'
+                />
                 <Title title='Menu' />
                 <Card
                     img={

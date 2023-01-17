@@ -1,0 +1,54 @@
+{
+    "data": [
+        {
+            "title": "Bacon,Egg & Cheese McGriddles",
+            "img": "../../../assets/mcgriddle.png",
+            
+
+            "standardPrice": {
+                "price": 4.29,
+                "cal": 400
+            },
+            "mealPrice": {
+                "price": 10.19,
+                "cal": [1140, 1350]
+            }
+        },
+        {
+            "title": "Sausage 'N Egg McMuffin",
+            "img": "../../../assets/mcgriddle.png",
+            "standardPrice": {
+                "price": 4.19,
+                "cal": 430
+            },
+            "mealPrice": {
+                "price": 10.19,
+                "cal": [1140, 1350]
+            }
+        },
+        {
+            "title": "Bacon 'N Egg McMuffin",
+            "img": "../../../assets/mcgriddle.png",
+            "standardPrice": {
+                "price": 4.19,
+                "cal": 310
+            },
+            "mealPrice": {
+                "price": 10.19,
+                "cal": [1140, 1350]
+            }
+        },
+        {
+            "title": "Chicken McMuffin",
+            "img": "../../../assets/mcgriddle.png",
+            "standardPrice": {
+                "price": 2.99,
+                "cal": 360
+            },
+            "mealPrice": {
+                "price": 10.19,
+                "cal": [1140, 1350]
+            }
+        }
+    ]
+}
