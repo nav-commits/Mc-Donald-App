@@ -1,22 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 
-export default function TopBar() {
+export default function TopBar({ content, alignItems }) {
     return (
-        <View style={styles.container}>
-           <Image source={require('../../../assets/McDonald.png')} style={{width: 55, height: 28}} />
+        <View
+            style={{
+                display: 'flex',
+                alignItems: alignItems,
+                borderBottomColor: 'lightgray',
+                borderBottomWidth: 0.9,
+                padding: 10,
+                backgroundColor: '#fff',
+                shadowColor: '#000',
+                shadowOffset: { width: 2, height: 3 },
+                shadowOpacity: 0.8,
+                shadowRadius: 10,
+                elevation: 5,
+            }}
+        >
+            {content}
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        display: 'flex',
-        alignItems: 'center',
-        borderBottomColor: 'lightgray',
-        borderBottomWidth: 1,
-        marginTop: 5,
-        padding: 5
-    },
-    
-});
