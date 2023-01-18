@@ -7,7 +7,7 @@ import Button from '../Atoms/Button';
 export default function Home({ navigation }) {
     return (
         <ScrollView style={styles.scrollView}>
-            <View style={{ backgroundColor: 'white', }}>
+            <View>
                 <StatusBar backgroundColor={'grey'} />
                 <TopBar
                     content={

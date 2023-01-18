@@ -1,39 +1,30 @@
-import { View, Text, StyleSheet, FlatList, Linking } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 import TopBar from '../Molecules/TopBar';
 import Title from '../Atoms/Title';
 import { BreakfastSandwhiches } from '../../data/data.json';
 import { Burgers } from '../../data/data.json';
 import MenuItem from '../Molecules/MenuItem';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import React, {useState} from 'react';
+import { useNavigation } from '@react-navigation/native';
+import MenuTitleSection from '../Organisms/MenuTitleSection';
+
 export default function Order() {
+    const navigation = useNavigation();
+    const onPress = () => {
+        navigation.navigate('ProductDetail');
+    };
     return (
-        <View style={{ backgroundColor: 'white' }}>
+        <View>
             <TopBar content={<Text style={styles.titleText}>Order</Text>} alignItems='flex-start' />
             <Title title='Explore our menu' size={13} paddingLeft={10} paddingTop={15} />
-            <View
-                style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                }}
-            >
-                <Title
-                    title='Breakfast Sandwhiches and Buritos'
-                    size={15}
-                    paddingLeft={10}
-                    paddingTop={20}
-                />
-                <Text
-                    onPress={() => Linking.openURL('http://google.com')}
-                    style={{ paddingTop: 20, paddingRight: 10, color: '#357EC7' }}
-                >
-                    View all
-                     <Ionicons name={'arrow-forward'}/>
-                </Text>
-               
-            </View>
-
+            <MenuTitleSection
+                title={'Breakfast Sandwhiches and Buritos'}
+                onPress={onPress}
+                size={15}
+                paddingLeft={10}
+                paddingTop={15}
+                iconTitle="View all"
+            />
             <FlatList
                 style={styles.listStyle}
                 keyExtractor={(key) => {
@@ -53,7 +44,14 @@ export default function Order() {
                     );
                 }}
             />
-            <Title title='Burgers' size={15} paddingLeft={10} paddingTop={15} />
+            <MenuTitleSection
+                title={'Burgers'}
+                onPress={onPress}
+                size={15}
+                paddingLeft={10}
+                paddingTop={20}
+                iconTitle="View all"
+            />
             <FlatList
                 style={styles.listStyle}
                 keyExtractor={(key) => {
