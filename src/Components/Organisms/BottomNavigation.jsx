@@ -7,7 +7,6 @@ import Code from '../Screens/Code';
 import Home from '../Screens/Home';
 
 const Tab = createBottomTabNavigator();
-
 export default function BottomNavigation() {
     return (
            <Tab.Navigator
@@ -27,13 +26,11 @@ export default function BottomNavigation() {
                         } else if (route.name === 'RewardsAndOffers') {
                             iconName = focused ? 'md-body-sharp' : 'md-body-outline';
                         }
-                        // You can return any component that you like here!
                         return <Ionicons name={iconName} size={size} color={color} />;
                     },
                     tabBarActiveTintColor: '#ffbc0d',
                     tabBarInactiveTintColor: 'gray',
-                    headerShown: false,
-                    
+                    headerShown: false
                 })}
             >
                 <Tab.Screen name='Home' component={Home} />

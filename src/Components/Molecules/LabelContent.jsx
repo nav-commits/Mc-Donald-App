@@ -1,6 +1,6 @@
-import { StyleSheet, View, Image } from 'react-native';
+import { View } from 'react-native';
 
-export default function TopBar({ content, alignItems }) {
+export default function LabelContent({ content, alignItems }) {
     return (
         <View
             style={{

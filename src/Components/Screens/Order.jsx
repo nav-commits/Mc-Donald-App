@@ -1,21 +1,35 @@
-import { View, Text, StyleSheet, FlatList } from 'react-native';
-import TopBar from '../Molecules/TopBar';
+import { View, Text, StyleSheet, FlatList, ScrollView } from 'react-native';
+import LabelContent from '../Molecules/LabelContent';
 import Title from '../Atoms/Title';
 import { BreakfastSandwhiches } from '../../data/data.json';
 import { Burgers } from '../../data/data.json';
 import MenuItem from '../Molecules/MenuItem';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import MenuTitleSection from '../Organisms/MenuTitleSection';
+import { dataContent } from '../../Utils/Labels';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function Order() {
     const navigation = useNavigation();
     const onPress = () => {
         navigation.navigate('ProductDetail');
     };
+
     return (
-        <View>
-            <TopBar content={<Text style={styles.titleText}>Order</Text>} alignItems='flex-start' />
+        <ScrollView showsVerticalScrollIndicator={false} stickyHeaderIndices={[0]}>
+            <LabelContent
+                content={
+                    <View>
+                        <Text style={styles.titleText}>Order</Text>
+                        <Text style={styles.location}>
+                            <Ionicons style={{fontSize: 20, color: 'red'}} name={'md-location-sharp'} /> 30 Brisdale Road
+                        </Text>
+                        <Text style={{ paddingLeft: 8 }}>Now serving lunch and dinner</Text>
+                    </View>
+                }
+                alignItems='flex-start'
+            />
             <Title title='Explore our menu' size={13} paddingLeft={10} paddingTop={15} />
             <MenuTitleSection
                 title={'Breakfast Sandwhiches and Buritos'}
@@ -23,7 +37,7 @@ export default function Order() {
                 size={15}
                 paddingLeft={10}
                 paddingTop={15}
-                iconTitle="View all"
+                iconTitle='View all'
             />
             <FlatList
                 style={styles.listStyle}
@@ -50,7 +64,7 @@ export default function Order() {
                 size={15}
                 paddingLeft={10}
                 paddingTop={20}
-                iconTitle="View all"
+                iconTitle='View all'
             />
             <FlatList
                 style={styles.listStyle}
@@ -71,13 +85,27 @@ export default function Order() {
                     );
                 }}
             />
-        </View>
+            <FlatList
+                keyExtractor={(key) => {
+                    return key.id;
+                }}
+                showsVerticalScrollIndicator={true}
+                data={dataContent}
+                renderItem={({ item }) => {
+                    return (
+                        <LabelContent
+                            content={<Text style={styles.titleText}>{item.name}</Text>}
+                            alignItems='flex-start'
+                        />
+                    );
+                }}
+            />
+        </ScrollView>
     );
 }
-
 const styles = StyleSheet.create({
     titleText: {
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: 'bold',
         paddingLeft: 5,
         paddingTop: 20,
@@ -89,7 +117,12 @@ const styles = StyleSheet.create({
     },
     listStyle: {
         textAlign: 'center',
-        margin: 15,
+        margin: 5,
         padding: 10,
+    },
+    location: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        paddingLeft: 5,
     },
 });

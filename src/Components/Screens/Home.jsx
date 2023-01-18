@@ -1,7 +1,7 @@
 import { View, StatusBar, Image, ScrollView, StyleSheet } from 'react-native';
-import TopBar from '../Molecules/TopBar';
+import LabelContent from '../Molecules/LabelContent';
 import Title from '../Atoms/Title';
-import Card from '../Molecules/Card';
+import PresentationCard from '../Molecules/PresentationCard';
 import Button from '../Atoms/Button';
 
 export default function Home({ navigation }) {
@@ -9,7 +9,7 @@ export default function Home({ navigation }) {
         <ScrollView style={styles.scrollView}>
             <View>
                 <StatusBar backgroundColor={'grey'} />
-                <TopBar
+                <LabelContent
                     content={
                         <Image
                             source={require('../../../assets/McDonald.png')}
@@ -19,7 +19,7 @@ export default function Home({ navigation }) {
                     alignItems='center'
                 />
                 <Title title='Menu' paddingLeft={30} paddingTop={30} size={20} />
-                <Card
+                <PresentationCard
                     img={
                         <Image
                             source={require('../../../assets/bigmac.png')}
@@ -39,7 +39,7 @@ export default function Home({ navigation }) {
                     }
                 />
                 <Title title='My Offers' paddingLeft={30} paddingTop={30} size={20} />
-                <Card
+                <PresentationCard
                     img={
                         <Image
                             source={require('../../../assets/0511-mcds.png')}
@@ -58,7 +58,7 @@ export default function Home({ navigation }) {
                     }
                 />
                 <Title title="What's New" paddingLeft={30} paddingTop={30} size={20} />
-                <Card
+                <PresentationCard
                     img={
                         <Image
                             source={require('../../../assets/mcnuggets.png')}
