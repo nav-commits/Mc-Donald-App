@@ -14,6 +14,7 @@ export default function Home({ navigation }) {
                         <Image
                             source={require('../../../assets/McDonald.png')}
                             style={{ width: 55, height: 28 }}
+                               
                         />
                     }
                     alignItems='center'

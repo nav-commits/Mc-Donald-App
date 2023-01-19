@@ -1,4 +1,12 @@
-import { View, Text, StyleSheet, FlatList, ScrollView } from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    FlatList,
+    ScrollView,
+    Image,
+    TouchableOpacity,
+} from 'react-native';
 import LabelContent from '../Molecules/LabelContent';
 import Title from '../Atoms/Title';
 import { BreakfastSandwhiches } from '../../data/data.json';
@@ -6,24 +14,36 @@ import { Burgers } from '../../data/data.json';
 import MenuItem from '../Molecules/MenuItem';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import MenuTitleSection from '../Organisms/MenuTitleSection';
+import MenuTitleSection from '../Molecules/MenuTitleSection';
 import { dataContent } from '../../Utils/Labels';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/Ionicons';
+import PopupModal from '../Molecules/PopupModal';
 
 export default function Order() {
     const navigation = useNavigation();
     const onPress = () => {
         navigation.navigate('ProductDetail');
     };
+    const [modalVisible, setModalVisible] = React.useState(false);
+    const [activeItem, setActiveItem] = React.useState(null);
 
+    const onPressHandler = (item) => {
+        setActiveItem(item);
+        setModalVisible(true);
+    };
     return (
         <ScrollView showsVerticalScrollIndicator={false} stickyHeaderIndices={[0]}>
             <LabelContent
                 content={
-                    <View>
-                        <Text style={styles.titleText}>Order</Text>
+                    <View style={{ height: 100 }}>
+                        <Text style={styles.orderTitle}>Order</Text>
                         <Text style={styles.location}>
-                            <Ionicons style={{fontSize: 20, color: 'red'}} name={'md-location-sharp'} /> 30 Brisdale Road
+                            <Ionicons
+                                style={{ fontSize: 20, color: 'red' }}
+                                name={'md-location-sharp'}
+                            />{' '}
+                            30 Brisdale Road
                         </Text>
                         <Text style={{ paddingLeft: 8 }}>Now serving lunch and dinner</Text>
                     </View>
@@ -32,7 +52,7 @@ export default function Order() {
             />
             <Title title='Explore our menu' size={13} paddingLeft={10} paddingTop={15} />
             <MenuTitleSection
-                title={'Breakfast Sandwhiches and Buritos'}
+                title={'Breakfast Sandwiches and Burritos'}
                 onPress={onPress}
                 size={15}
                 paddingLeft={10}
@@ -49,12 +69,36 @@ export default function Order() {
                 data={BreakfastSandwhiches}
                 renderItem={({ item }) => {
                     return (
-                        <MenuItem
-                            title={item.title}
-                            price={item.standardPrice.price}
-                            cal={item.standardPrice.cal}
-                            img={item.img}
-                        />
+                        <TouchableOpacity onPress={() => onPressHandler(item)}>
+                            <MenuItem
+                                title={item.title}
+                                price={item.standardPrice.price}
+                                cal={item.standardPrice.cal}
+                                img={item.img}
+                            />
+                            <PopupModal
+                                modalVisible={modalVisible}
+                                setModalVisible={setModalVisible}
+                                activeItem={activeItem}
+                                icon={
+                                    <Icon
+                                        name={'close'}
+                                        size={25}
+                                        style={{ paddingTop: 5 }}
+                                        onPress={() => {
+                                            setModalVisible(!modalVisible);
+                                        }}
+                                    />
+                                }
+                                info={
+                                    <Text>
+                                        Calories do not reflect customization or additional
+                                        ingredients. Adults and youth (ages 13 and older) need an
+                                        average of 2,000 calories a day
+                                    </Text>
+                                }
+                            />
+                        </TouchableOpacity>
                     );
                 }}
             />
@@ -76,30 +120,50 @@ export default function Order() {
                 data={Burgers}
                 renderItem={({ item }) => {
                     return (
-                        <MenuItem
-                            title={item.title}
-                            price={item.standardPrice.price}
-                            cal={item.standardPrice.cal}
-                            img={item.img}
-                        />
+                        <TouchableOpacity onPress={() => onPressHandler(item)}>
+                            <MenuItem
+                                title={item.title}
+                                price={item.standardPrice.price}
+                                cal={item.standardPrice.cal}
+                                img={item.img}
+                            />
+                            <PopupModal
+                                modalVisible={modalVisible}
+                                setModalVisible={setModalVisible}
+                                activeItem={activeItem}
+                                icon={
+                                    <Icon
+                                        name={'close'}
+                                        size={25}
+                                        style={{ paddingTop: 5 }}
+                                        onPress={() => {
+                                            setModalVisible(!modalVisible);
+                                        }}
+                                    />
+                                }
+                                 info={
+                                    <Text>
+                                        Calories do not reflect customization or additional
+                                        ingredients. Adults and youth (ages 13 and older) need an
+                                        average of 2,000 calories a day.
+                                    </Text>
+                                }
+                            />
+                        </TouchableOpacity>
                     );
                 }}
             />
-            <FlatList
-                keyExtractor={(key) => {
-                    return key.id;
-                }}
-                showsVerticalScrollIndicator={true}
-                data={dataContent}
-                renderItem={({ item }) => {
-                    return (
-                        <LabelContent
-                            content={<Text style={styles.titleText}>{item.name}</Text>}
-                            alignItems='flex-start'
-                        />
-                    );
-                }}
-            />
+            {dataContent.map((item, i) => (
+                <LabelContent
+                    key={i}
+                    content={<Text style={styles.titleText}>{item.name}</Text>}
+                    alignItems='flex-start'
+                    justifyContent='space-between'
+                    flexDirection='row'
+                    icon={<Icon name={item.icon} size={25} style={{ paddingTop: 20 }} />}
+                    img={<Image source={{ uri: item.img }} style={{ width: 45, height: 35 }} />}
+                />
+            ))}
         </ScrollView>
     );
 }
@@ -107,8 +171,8 @@ const styles = StyleSheet.create({
     titleText: {
         fontSize: 25,
         fontWeight: 'bold',
-        paddingLeft: 5,
-        paddingTop: 20,
+        paddingLeft: 25,
+        paddingTop: 10,
     },
     title: {
         fontSize: 10,
@@ -124,5 +188,11 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: 'bold',
         paddingLeft: 5,
+    },
+    orderTitle: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        paddingLeft: 10,
+        paddingTop: 10,
     },
 });
