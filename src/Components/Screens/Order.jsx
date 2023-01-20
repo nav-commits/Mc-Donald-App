@@ -7,7 +7,7 @@ import {
     Image,
     TouchableOpacity,
 } from 'react-native';
-import LabelItem from '../Molecules/LabelItem/LabelItem';
+
 import Title from '../Atoms/Title/Title';
 import { BreakfastSandwhiches } from '../../data/data.json';
 import { Burgers } from '../../data/data.json';
@@ -19,7 +19,8 @@ import { dataContent } from '../../Utils/Labels';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PopupModal from '../Molecules/PopupModal/PopupModal';
-import LabelContent from '../Molecules/LabelItem/LabelItem';
+import LabelContent from '../Organisms/LabelContent/LabelContent';
+import LabelItem from '../Molecules/LabelItem/LabelItem';
 
 export default function Order() {
     const navigation = useNavigation();
@@ -35,7 +36,7 @@ export default function Order() {
     };
     return (
         <ScrollView showsVerticalScrollIndicator={false} stickyHeaderIndices={[0]}>
-            <LabelContent
+            <LabelItem
                 content={
                     <View style={{ height: 100 }}>
                         <Text style={styles.orderTitle}>Order</Text>
