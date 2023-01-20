@@ -7,18 +7,18 @@ import {
     Image,
     TouchableOpacity,
 } from 'react-native';
-import LabelContent from '../Molecules/LabelContent';
-import Title from '../Atoms/Title';
+import LabelContent from '../Molecules/LabelContent/LabelContent';
+import Title from '../Atoms/Title/Title';
 import { BreakfastSandwhiches } from '../../data/data.json';
 import { Burgers } from '../../data/data.json';
-import MenuItem from '../Molecules/MenuItem';
+import MenuItem from '../Molecules/MenuItem/MenuItem';
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import MenuTitleSection from '../Molecules/MenuTitleSection';
+import MenuTitleSection from '../Molecules/MenuTitleSection/MenuTitleSection';
 import { dataContent } from '../../Utils/Labels';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/Ionicons';
-import PopupModal from '../Molecules/PopupModal';
+import PopupModal from '../Molecules/PopupModal/PopupModal';
 
 export default function Order() {
     const navigation = useNavigation();

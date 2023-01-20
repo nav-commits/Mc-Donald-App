@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
-import BottomNavigation from './src/Components/Organisms/BottomNavigation';
+import BottomNavigation from './src/Components/Organisms/BottomNavigation/BottomNavigation';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ProductDetail from './src/Components/Screens/ProductDetail';
 
@@ -12,7 +12,6 @@ const MyTheme = {
     },
 };
 const Stack = createNativeStackNavigator();
-
 export default function App() {
     return (
         <NavigationContainer theme={MyTheme}>

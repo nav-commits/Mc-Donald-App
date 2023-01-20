@@ -1,8 +1,8 @@
 import { View, StatusBar, Image, ScrollView, StyleSheet } from 'react-native';
-import LabelContent from '../Molecules/LabelContent';
-import Title from '../Atoms/Title';
-import PresentationCard from '../Molecules/PresentationCard';
-import Button from '../Atoms/Button';
+import LabelContent from '../Molecules/LabelContent/LabelContent';
+import Title from '../Atoms/Title/Title';
+import PresentationCard from '../Molecules/PresentationCard/PresentationCard';
+import Button from '../Atoms/Button/Button';
 
 export default function Home({ navigation }) {
     return (

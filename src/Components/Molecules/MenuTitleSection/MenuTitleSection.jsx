@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native';
-import Title from '../Atoms/Title';
+import Title from '../../Atoms/Title/Title';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function MenuTitleSection({ title, onPress, size, paddingLeft,paddingTop, iconTitle}) {
