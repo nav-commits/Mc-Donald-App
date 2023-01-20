@@ -1,25 +1,26 @@
 import { View, StatusBar, Image, ScrollView, StyleSheet } from 'react-native';
-import TopBar from '../Molecules/TopBar';
-import Title from '../Atoms/Title';
-import Card from '../Molecules/Card';
-import Button from '../Atoms/Button';
+import LabelContent from '../Molecules/LabelContent/LabelContent';
+import Title from '../Atoms/Title/Title';
+import PresentationCard from '../Molecules/PresentationCard/PresentationCard';
+import Button from '../Atoms/Button/Button';
 
 export default function Home({ navigation }) {
     return (
         <ScrollView style={styles.scrollView}>
-            <View style={{ backgroundColor: 'white' }}>
+            <View>
                 <StatusBar backgroundColor={'grey'} />
-                <TopBar
+                <LabelContent
                     content={
                         <Image
                             source={require('../../../assets/McDonald.png')}
                             style={{ width: 55, height: 28 }}
+                               
                         />
                     }
                     alignItems='center'
                 />
-                <Title title='Menu' />
-                <Card
+                <Title title='Menu' paddingLeft={30} paddingTop={30} size={20} />
+                <PresentationCard
                     img={
                         <Image
                             source={require('../../../assets/bigmac.png')}
@@ -38,8 +39,8 @@ export default function Home({ navigation }) {
                         />
                     }
                 />
-                <Title title='My Offers' />
-                <Card
+                <Title title='My Offers' paddingLeft={30} paddingTop={30} size={20} />
+                <PresentationCard
                     img={
                         <Image
                             source={require('../../../assets/0511-mcds.png')}
@@ -57,8 +58,8 @@ export default function Home({ navigation }) {
                         />
                     }
                 />
-                <Title title="What's New" />
-                <Card
+                <Title title="What's New" paddingLeft={30} paddingTop={30} size={20} />
+                <PresentationCard
                     img={
                         <Image
                             source={require('../../../assets/mcnuggets.png')}

@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 export default function Button({ position, top, left, title, backgroundColor, width , onPress}) {
