@@ -1,5 +1,5 @@
 import { View, StatusBar, Image, ScrollView, StyleSheet } from 'react-native';
-import LabelContent from '../Molecules/LabelContent/LabelContent';
+import LabelContent from '../Molecules/LabelItem/LabelItem';
 import Title from '../Atoms/Title/Title';
 import PresentationCard from '../Molecules/PresentationCard/PresentationCard';
 import Button from '../Atoms/Button/Button';

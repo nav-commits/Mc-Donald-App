@@ -1,7 +1,8 @@
 import { View, Modal, Text, StyleSheet, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-
+import Button from '../../Atoms/Button/Button';
+import { useNavigation } from '@react-navigation/native';
 export default function PopupModal({ modalVisible, activeItem, icon, info }) {
+    const navigation = useNavigation();
     return (
         <View style={styles.centeredView}>
             <Modal animationType='slide' transparent={true} visible={modalVisible}>
@@ -12,7 +13,9 @@ export default function PopupModal({ modalVisible, activeItem, icon, info }) {
                         <Text style={styles.modalText}>{activeItem?.title}</Text>
                         <View style={{ display: 'flex', flexDirection: 'row' }}>
                             <Text>${activeItem?.standardPrice?.price}</Text>
-                            <Text style={{paddingLeft: 10}}>{activeItem?.standardPrice?.cal} cals</Text>
+                            <Text style={{ paddingLeft: 10 }}>
+                                {activeItem?.standardPrice?.cal} cals
+                            </Text>
                         </View>
 
                         <View
@@ -26,6 +29,29 @@ export default function PopupModal({ modalVisible, activeItem, icon, info }) {
                                 source={{ uri: activeItem?.img }}
                                 style={{ width: 205, height: 205 }}
                             />
+                        </View>
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                                justifyContent: 'center',
+                                display: 'flex',
+                                marginTop: 20
+                            }}
+                        >
+                            <Button
+                                title='Customize ingredients'
+                                backgroundColor='white'
+                                width={150}
+                                onPress={() => navigation.navigate('Order')}
+                            />
+                            <View style={{ marginLeft: 10 }}>
+                                <Button
+                                    title='Add to bag'
+                                    backgroundColor='#ffbc0d'
+                                    width={150}
+                                    onPress={() => navigation.navigate('Order')}
+                                />
+                            </View>
                         </View>
                     </View>
                 </View>
@@ -52,9 +78,9 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     modalText: {
-       paddingTop: 10,
+        paddingTop: 30,
         fontSize: 20,
         fontWeight: 'bold',
-        paddingBottom: 10
+        paddingBottom: 10,
     },
 });

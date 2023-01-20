@@ -7,7 +7,7 @@ import {
     Image,
     TouchableOpacity,
 } from 'react-native';
-import LabelContent from '../Molecules/LabelContent/LabelContent';
+import LabelItem from '../Molecules/LabelItem/LabelItem';
 import Title from '../Atoms/Title/Title';
 import { BreakfastSandwhiches } from '../../data/data.json';
 import { Burgers } from '../../data/data.json';
@@ -19,6 +19,7 @@ import { dataContent } from '../../Utils/Labels';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PopupModal from '../Molecules/PopupModal/PopupModal';
+import LabelContent from '../Molecules/LabelItem/LabelItem';
 
 export default function Order() {
     const navigation = useNavigation();
@@ -153,17 +154,7 @@ export default function Order() {
                     );
                 }}
             />
-            {dataContent.map((item, i) => (
-                <LabelContent
-                    key={i}
-                    content={<Text style={styles.titleText}>{item.name}</Text>}
-                    alignItems='flex-start'
-                    justifyContent='space-between'
-                    flexDirection='row'
-                    icon={<Icon name={item.icon} size={25} style={{ paddingTop: 20 }} />}
-                    img={<Image source={{ uri: item.img }} style={{ width: 45, height: 35 }} />}
-                />
-            ))}
+            <LabelContent dataContent={dataContent} />
         </ScrollView>
     );
 }
