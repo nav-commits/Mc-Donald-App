@@ -19,7 +19,7 @@ export default function Home({ navigation }) {
                     }
                     alignItems='center'
                 />
-                <Title title='Menu' paddingLeft={30} paddingTop={30} size={20} />
+                <Title title='Menu' paddingLeft={20} paddingTop={30} size={20} />
                 <PresentationCard
                     img={
                         <Image
@@ -39,7 +39,7 @@ export default function Home({ navigation }) {
                         />
                     }
                 />
-                <Title title='My Offers' paddingLeft={30} paddingTop={30} size={20} />
+                <Title title='My Offers' paddingLeft={20} paddingTop={30} size={20} />
                 <PresentationCard
                     img={
                         <Image
@@ -57,8 +57,9 @@ export default function Home({ navigation }) {
                             width={115}
                         />
                     }
+                    paddingRight={25}
                 />
-                <Title title="What's New" paddingLeft={30} paddingTop={30} size={20} />
+                <Title title="What's New" paddingLeft={20} paddingTop={30} size={20} />
                 <PresentationCard
                     img={
                         <Image

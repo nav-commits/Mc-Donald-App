@@ -18,15 +18,15 @@ export default function BottomNavigation() {
     const iconChanger = (focused, route , color, size) => {
         let iconType;
         if (route.name === 'Home') {
-            ; return iconType =  <Image source={{ uri: focused ? mcDonaldLogo?.mcDonaldLogoActive :  mcDonaldLogo?.mcDonaldLogoNotActive}} style={{ width: focused? 28: 36,  height: focused? 25 : 40, marginTop: 10}} />
+            ; return iconType =  <Image source={{ uri: focused ? mcDonaldLogo?.mcDonaldLogoActive :  mcDonaldLogo?.mcDonaldLogoNotActive}} style={{ width: focused? 24: 36,  height: focused? 20 : 40, marginTop: 10}} />
         } else if (route.name === 'Order') {
-            return iconType = <Image source={{ uri: focused ? frenchFriesLogo?.frenchFriesActive: frenchFriesLogo?.frenchFriesNotActive  }} style={{ width: focused? 28: 34, height: 25, marginTop: 10}} />;
+            return iconType = <Image source={{ uri: focused ? frenchFriesLogo?.frenchFriesActive: frenchFriesLogo?.frenchFriesNotActive  }} style={{ width: focused? 28: 34, height: 25, marginTop: 13}} />;
         } else if (route.name === 'Code') {
-            return iconType =  <Image source={{ uri: focused ? codeLogo?.codeLogoActive : codeLogo?.codeLogoNotActive  }} style={{ width: focused? 28: 34, height: 25, marginTop: 10}} />
+            return iconType =  <Image source={{ uri: focused ? codeLogo?.codeLogoActive : codeLogo?.codeLogoNotActive  }} style={{ width: focused? 28: 34, height: 25, marginTop: 13}} />
         } else if (route.name === 'More') {
-            return iconType = <Ionicons color={color} size={size}  name={focused ?moreLogo?.moreLogoActive : moreLogo?.moreLogoNotActive}/>
+            return iconType = <Ionicons color={color} size={size}  style={{marginTop: 8}} name={focused ?moreLogo?.moreLogoActive : moreLogo?.moreLogoNotActive}/>
         } else if (route.name === 'Rewards&Offers') {
-            return iconType =  <Image source={{ uri: focused ?  rewardsLogo?.rewardsLogoActive : rewardsLogo?.rewardsLogoNotActive}} style={{ width: focused? 28: 34, height: focused? 25 : 28, marginTop: !focused? 15: 8}} />
+            return iconType =  <Image source={{ uri: focused ?  rewardsLogo?.rewardsLogoActive : rewardsLogo?.rewardsLogoNotActive}} style={{ width: focused? 28: 34, height: focused? 25 : 28, marginTop: !focused? 20: 8}} />
         }
         return iconType;
     };
@@ -41,6 +41,7 @@ export default function BottomNavigation() {
                             color: focused ? 'black' : 'gray',
                             fontWeight: focused ? 'bold' : '',
                             fontSize: 11,
+                             marginTop: 5
                         }}
                     >
                         {route.name}
@@ -53,6 +54,7 @@ export default function BottomNavigation() {
                             color: focused ? 'black' : 'gray',
                             fontWeight: focused ? 'bold' : '',
                             fontSize: 11,
+                             marginTop: 5
                         }}
                     >
                         {route.name}
@@ -67,6 +69,7 @@ export default function BottomNavigation() {
                             fontSize: 11,
                             width: 120,
                             textAlign: 'center',
+                             marginTop: 5
                         }}
                     >
                         {route.name}
@@ -79,6 +82,7 @@ export default function BottomNavigation() {
                             color: focused ? 'black' : 'gray',
                             fontWeight: focused ? 'bold' : '',
                             fontSize: 11,
+                            marginTop: 5
                         }}
                     >
                         {route.name}
@@ -91,6 +95,7 @@ export default function BottomNavigation() {
                             color: focused ? 'black' : 'gray',
                             fontWeight: focused ? 'bold' : '',
                             fontSize: 11,
+                             marginTop: 5
                         }}
                     >
                         {route.name}
