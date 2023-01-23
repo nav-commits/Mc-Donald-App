@@ -19,7 +19,7 @@ export default function MenuTitleSection({ title, onPress, size, paddingLeft,pad
                 paddingTop={paddingTop}
             />
             <Text
-                onPress={onPress}
+                onPress={() => onPress(title)}
                 style={{ paddingTop: 20, paddingRight: 10, color: '#357EC7' }}
             >
                {iconTitle}

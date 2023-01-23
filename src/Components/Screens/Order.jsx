@@ -9,10 +9,10 @@ import {
 } from 'react-native';
 
 import Title from '../Atoms/Title/Title';
-import { BreakfastSandwhiches } from '../../data/data.json';
+import { BreakfastSandwiches } from '../../data/data.json';
 import { Burgers } from '../../data/data.json';
 import MenuItem from '../Molecules/MenuItem/MenuItem';
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import MenuTitleSection from '../Molecules/MenuTitleSection/MenuTitleSection';
 import { dataContent } from '../../Utils/Labels';
@@ -24,8 +24,18 @@ import LabelItem from '../Molecules/LabelItem/LabelItem';
 
 export default function Order() {
     const navigation = useNavigation();
-    const onPress = () => {
-        navigation.navigate('ProductDetail');
+    const onPress = (title) => {
+        if (title === 'Burgers') {
+            navigation.navigate('ProductDetail', {
+                dataContent: Burgers,
+                name: 'Burgers'
+            });
+        } else if (title === 'Breakfast Sandwiches') {
+            navigation.navigate('ProductDetail', {
+                dataContent: BreakfastSandwiches,
+                name: 'Breakfast Sandwiches'
+            });
+        }
     };
     const [modalVisible, setModalVisible] = React.useState(false);
     const [activeItem, setActiveItem] = React.useState(null);
@@ -38,7 +48,7 @@ export default function Order() {
         <ScrollView showsVerticalScrollIndicator={false} stickyHeaderIndices={[0]}>
             <LabelItem
                 content={
-                    <View style={{ height: 100 }}>
+                    <View style={{ height: 70 }}>
                         <Text style={styles.orderTitle}>Order</Text>
                         <Text style={styles.location}>
                             <Ionicons
@@ -47,14 +57,13 @@ export default function Order() {
                             />{' '}
                             30 Brisdale Road
                         </Text>
-                        <Text style={{ paddingLeft: 8 }}>Now serving lunch and dinner</Text>
                     </View>
                 }
                 alignItems='flex-start'
             />
             <Title title='Explore our menu' size={13} paddingLeft={10} paddingTop={15} />
             <MenuTitleSection
-                title={'Breakfast Sandwiches and Burritos'}
+                title={'Breakfast Sandwiches'}
                 onPress={onPress}
                 size={15}
                 paddingLeft={10}
@@ -68,7 +77,7 @@ export default function Order() {
                 }}
                 horizontal
                 showsHorizontalScrollIndicator={false}
-                data={BreakfastSandwhiches}
+                data={BreakfastSandwiches}
                 renderItem={({ item }) => {
                     return (
                         <TouchableOpacity onPress={() => onPressHandler(item)}>
@@ -143,7 +152,7 @@ export default function Order() {
                                         }}
                                     />
                                 }
-                                 info={
+                                info={
                                     <Text>
                                         Calories do not reflect customization or additional
                                         ingredients. Adults and youth (ages 13 and older) need an
