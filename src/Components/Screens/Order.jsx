@@ -28,12 +28,12 @@ export default function Order() {
         if (title === 'Burgers') {
             navigation.navigate('ProductDetail', {
                 dataContent: Burgers,
-                name: 'Burgers'
+                name: 'Burgers',
             });
         } else if (title === 'Breakfast Sandwiches') {
             navigation.navigate('ProductDetail', {
                 dataContent: BreakfastSandwiches,
-                name: 'Breakfast Sandwiches'
+                name: 'Breakfast Sandwiches',
             });
         }
     };
@@ -54,8 +54,8 @@ export default function Order() {
                             <Ionicons
                                 style={{ fontSize: 20, color: 'red' }}
                                 name={'md-location-sharp'}
-                            />{' '}
-                            30 Brisdale Road
+                            />
+                            30 Brisdale Dr Bldg C, Brampton, ON
                         </Text>
                     </View>
                 }
@@ -105,7 +105,9 @@ export default function Order() {
                                     <Text>
                                         Calories do not reflect customization or additional
                                         ingredients. Adults and youth (ages 13 and older) need an
-                                        average of 2,000 calories a day
+                                        average of 2,000 calories a day, and children (ages 4 to 12)
+                                        need an average of 1,500 calories a day. However, individual
+                                        needs vary
                                     </Text>
                                 }
                             />
@@ -156,7 +158,9 @@ export default function Order() {
                                     <Text>
                                         Calories do not reflect customization or additional
                                         ingredients. Adults and youth (ages 13 and older) need an
-                                        average of 2,000 calories a day.
+                                        average of 2,000 calories a day, and children (ages 4 to 12)
+                                        need an average of 1,500 calories a day. However, individual
+                                        needs vary
                                     </Text>
                                 }
                             />
