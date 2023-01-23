@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 
-export default function LabelContent({
+export default function LabelItem({
     content,
     alignItems,
     icon,

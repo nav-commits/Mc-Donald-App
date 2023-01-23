@@ -6,23 +6,29 @@ import RewardsAndOffers from '../../Screens/RewardsAndOffers';
 import Code from '../../Screens/Code';
 import Home from '../../Screens/Home';
 import { Text, Image } from 'react-native';
+import { mcDonaldLogo } from '../../../Utils/Images';
+import { frenchFriesLogo } from '../../../Utils/Images';
+import { codeLogo } from '../../../Utils/Images';
+import { moreLogo } from '../../../Utils/Images';
+import {  rewardsLogo  } from '../../../Utils/Images';
+
 
 const Tab = createBottomTabNavigator();
 export default function BottomNavigation() {
-    const iconChanger = (focused, route) => {
-        let iconName;
+    const iconChanger = (focused, route , color, size) => {
+        let iconType;
         if (route.name === 'Home') {
-            iconName = focused ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/2339px-McDonald%27s_Golden_Arches.svg.png' : 'https://theamazingbrentwood.com/wp-content/uploads/2019/11/McDonalds-black.png';
+            ; return iconType =  <Image source={{ uri: focused ? mcDonaldLogo?.mcDonaldLogoActive :  mcDonaldLogo?.mcDonaldLogoNotActive}} style={{ width: focused? 24: 36,  height: focused? 20 : 40, marginTop: 10}} />
         } else if (route.name === 'Order') {
-            iconName = focused ? 'https://www.pngitem.com/pimgs/m/80-807106_mcdonald-s-png-mcdonalds-french-fries-icon-transparent.png' : 'https://cdn3.iconfinder.com/data/icons/food-169/100/FOOD_ICONs-01-512.png';
+            return iconType = <Image source={{ uri: focused ? frenchFriesLogo?.frenchFriesActive: frenchFriesLogo?.frenchFriesNotActive  }} style={{ width: focused? 28: 34, height: 25, marginTop: 13}} />;
         } else if (route.name === 'Code') {
-            iconName = focused ? 'https://expressionengine.com/asset/img/add-on-icons/mx-qrcode-y.png'  : 'https://img.vendingmarketwatch.com/files/base/cygnus/vmw/image/2011/11/vmwqrcode_10446872.png?auto=format,compress&w=500&h=281&fit=clip';
+            return iconType =  <Image source={{ uri: focused ? codeLogo?.codeLogoActive : codeLogo?.codeLogoNotActive  }} style={{ width: focused? 28: 34, height: 25, marginTop: 13}} />
         } else if (route.name === 'More') {
-            iconName = focused ? 'ellipsis-horizontal' : 'ellipsis-horizontal-outline';
+            return iconType = <Ionicons color={color} size={size}  style={{marginTop: 8}} name={focused ?moreLogo?.moreLogoActive : moreLogo?.moreLogoNotActive}/>
         } else if (route.name === 'Rewards&Offers') {
-            iconName = focused ?  'https://www.mcdonalds.com/content/dam/sites/usa/nfl/publication/3PUB_OneCode_Redeem_376x376.jpg' : 'https://cdn0.iconfinder.com/data/icons/restaurant-service-business/64/coupon-voucher-discount-restaurant-food-512.png'
+            return iconType =  <Image source={{ uri: focused ?  rewardsLogo?.rewardsLogoActive : rewardsLogo?.rewardsLogoNotActive}} style={{ width: focused? 28: 34, height: focused? 25 : 28, marginTop: !focused? 20: 8}} />
         }
-        return <Image source={{ uri: iconName }} style={{ width: focused? 28: 34, height: 25, marginTop: 10}} />;
+        return iconType;
     };
 
     const changeLabelStyleActive = (focused, route) => {
@@ -35,6 +41,7 @@ export default function BottomNavigation() {
                             color: focused ? 'black' : 'gray',
                             fontWeight: focused ? 'bold' : '',
                             fontSize: 11,
+                             marginTop: 5
                         }}
                     >
                         {route.name}
@@ -47,6 +54,7 @@ export default function BottomNavigation() {
                             color: focused ? 'black' : 'gray',
                             fontWeight: focused ? 'bold' : '',
                             fontSize: 11,
+                             marginTop: 5
                         }}
                     >
                         {route.name}
@@ -61,6 +69,7 @@ export default function BottomNavigation() {
                             fontSize: 11,
                             width: 120,
                             textAlign: 'center',
+                             marginTop: 5
                         }}
                     >
                         {route.name}
@@ -73,6 +82,7 @@ export default function BottomNavigation() {
                             color: focused ? 'black' : 'gray',
                             fontWeight: focused ? 'bold' : '',
                             fontSize: 11,
+                            marginTop: 5
                         }}
                     >
                         {route.name}
@@ -85,6 +95,7 @@ export default function BottomNavigation() {
                             color: focused ? 'black' : 'gray',
                             fontWeight: focused ? 'bold' : '',
                             fontSize: 11,
+                             marginTop: 5
                         }}
                     >
                         {route.name}
@@ -96,8 +107,8 @@ export default function BottomNavigation() {
     return (
         <Tab.Navigator
             screenOptions={({ route }) => ({
-                tabBarIcon: ({ focused}) => {
-                    return iconChanger(focused,  route);
+                tabBarIcon: ({ focused, color, size}) => {
+                    return iconChanger(focused,  route, color, size);
                 },
                 tabBarActiveTintColor: '#ffbc0d',
                 tabBarInactiveTintColor: 'gray',

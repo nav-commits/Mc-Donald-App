@@ -7,23 +7,35 @@ import {
     Image,
     TouchableOpacity,
 } from 'react-native';
-import LabelContent from '../Molecules/LabelContent/LabelContent';
+
 import Title from '../Atoms/Title/Title';
-import { BreakfastSandwhiches } from '../../data/data.json';
+import { BreakfastSandwiches } from '../../data/data.json';
 import { Burgers } from '../../data/data.json';
 import MenuItem from '../Molecules/MenuItem/MenuItem';
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import MenuTitleSection from '../Molecules/MenuTitleSection/MenuTitleSection';
 import { dataContent } from '../../Utils/Labels';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PopupModal from '../Molecules/PopupModal/PopupModal';
+import LabelContent from '../Organisms/LabelContent/LabelContent';
+import LabelItem from '../Molecules/LabelItem/LabelItem';
 
 export default function Order() {
     const navigation = useNavigation();
-    const onPress = () => {
-        navigation.navigate('ProductDetail');
+    const onPress = (title) => {
+        if (title === 'Burgers') {
+            navigation.navigate('ProductDetail', {
+                dataContent: Burgers,
+                name: 'Burgers',
+            });
+        } else if (title === 'Breakfast Sandwiches') {
+            navigation.navigate('ProductDetail', {
+                dataContent: BreakfastSandwiches,
+                name: 'Breakfast Sandwiches',
+            });
+        }
     };
     const [modalVisible, setModalVisible] = React.useState(false);
     const [activeItem, setActiveItem] = React.useState(null);
@@ -34,25 +46,24 @@ export default function Order() {
     };
     return (
         <ScrollView showsVerticalScrollIndicator={false} stickyHeaderIndices={[0]}>
-            <LabelContent
+            <LabelItem
                 content={
-                    <View style={{ height: 100 }}>
+                    <View style={{ height: 70 }}>
                         <Text style={styles.orderTitle}>Order</Text>
                         <Text style={styles.location}>
                             <Ionicons
                                 style={{ fontSize: 20, color: 'red' }}
                                 name={'md-location-sharp'}
-                            />{' '}
-                            30 Brisdale Road
+                            />
+                            30 Brisdale Dr Bldg C, Brampton, ON
                         </Text>
-                        <Text style={{ paddingLeft: 8 }}>Now serving lunch and dinner</Text>
                     </View>
                 }
                 alignItems='flex-start'
             />
             <Title title='Explore our menu' size={13} paddingLeft={10} paddingTop={15} />
             <MenuTitleSection
-                title={'Breakfast Sandwiches and Burritos'}
+                title={'Breakfast Sandwiches'}
                 onPress={onPress}
                 size={15}
                 paddingLeft={10}
@@ -66,7 +77,7 @@ export default function Order() {
                 }}
                 horizontal
                 showsHorizontalScrollIndicator={false}
-                data={BreakfastSandwhiches}
+                data={BreakfastSandwiches}
                 renderItem={({ item }) => {
                     return (
                         <TouchableOpacity onPress={() => onPressHandler(item)}>
@@ -94,7 +105,9 @@ export default function Order() {
                                     <Text>
                                         Calories do not reflect customization or additional
                                         ingredients. Adults and youth (ages 13 and older) need an
-                                        average of 2,000 calories a day
+                                        average of 2,000 calories a day, and children (ages 4 to 12)
+                                        need an average of 1,500 calories a day. However, individual
+                                        needs vary
                                     </Text>
                                 }
                             />
@@ -141,11 +154,13 @@ export default function Order() {
                                         }}
                                     />
                                 }
-                                 info={
+                                info={
                                     <Text>
                                         Calories do not reflect customization or additional
                                         ingredients. Adults and youth (ages 13 and older) need an
-                                        average of 2,000 calories a day.
+                                        average of 2,000 calories a day, and children (ages 4 to 12)
+                                        need an average of 1,500 calories a day. However, individual
+                                        needs vary
                                     </Text>
                                 }
                             />
@@ -153,17 +168,7 @@ export default function Order() {
                     );
                 }}
             />
-            {dataContent.map((item, i) => (
-                <LabelContent
-                    key={i}
-                    content={<Text style={styles.titleText}>{item.name}</Text>}
-                    alignItems='flex-start'
-                    justifyContent='space-between'
-                    flexDirection='row'
-                    icon={<Icon name={item.icon} size={25} style={{ paddingTop: 20 }} />}
-                    img={<Image source={{ uri: item.img }} style={{ width: 45, height: 35 }} />}
-                />
-            ))}
+            <LabelContent dataContent={dataContent} />
         </ScrollView>
     );
 }

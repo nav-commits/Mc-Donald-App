@@ -14,7 +14,7 @@ export default function Button({ position, top, left, title, backgroundColor, wi
                 left: left,
                 backgroundColor: backgroundColor,
                 top: top,
-                width: width
+                width: width,
             }}
         >
             <Text style={styles.appButtonText}>{title}</Text>
