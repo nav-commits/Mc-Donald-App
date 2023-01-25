@@ -1,9 +1,11 @@
-import {  Text, StyleSheet, ScrollView } from 'react-native';
+import { Text, StyleSheet, ScrollView} from 'react-native';
 import ProductDetailContent from '../Organisms/ProductDetailContent/ProductDetailContent';
+import React, { useRef } from 'react';
 
 export default function ProductDetail({ route }) {
     const { dataContent } = route.params;
     return (
+
         <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
             <Text style={styles.calorieContent}>
                 Calories do not reflect customization or additional

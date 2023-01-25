@@ -1,6 +1,5 @@
 import { StyleSheet, View, Text, Image } from 'react-native';
 import LabelItem from '../../Molecules/LabelItem/LabelItem';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function ProductDetailContent({ dataContent }) {
@@ -73,9 +72,8 @@ const styles = StyleSheet.create({
     },
     burgerTitle: {
         paddingLeft: 10,
-        paddingTop: 2,
         paddingBottom: 15,
         fontSize: 24,
         fontWeight: 'bold',
-    }
+    },
 });

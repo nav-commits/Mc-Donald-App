@@ -107,7 +107,7 @@ export default function Order() {
                                         ingredients. Adults and youth (ages 13 and older) need an
                                         average of 2,000 calories a day, and children (ages 4 to 12)
                                         need an average of 1,500 calories a day. However, individual
-                                        needs vary
+                                        needs vary.
                                     </Text>
                                 }
                             />
@@ -160,7 +160,7 @@ export default function Order() {
                                         ingredients. Adults and youth (ages 13 and older) need an
                                         average of 2,000 calories a day, and children (ages 4 to 12)
                                         need an average of 1,500 calories a day. However, individual
-                                        needs vary
+                                        needs vary.
                                     </Text>
                                 }
                             />
