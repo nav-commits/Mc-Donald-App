@@ -18,6 +18,7 @@ export default function Home({ navigation }) {
                         />
                     }
                     alignItems='center'
+                    elevation={5}
                 />
                 <Title title='Menu' paddingLeft={20} paddingTop={30} size={20} />
                 <PresentationCard
@@ -36,6 +37,8 @@ export default function Home({ navigation }) {
                             backgroundColor='#ffbc0d'
                             width={120}
                             onPress={() => navigation.navigate('Order')}
+                            paddingHorizontal={10}
+                            paddingVertical={10}
                         />
                     }
                 />
@@ -55,6 +58,8 @@ export default function Home({ navigation }) {
                             left={10}
                             backgroundColor='white'
                             width={115}
+                            paddingHorizontal={10}
+                            paddingVertical={10}
                         />
                     }
                     paddingRight={25}
@@ -75,6 +80,8 @@ export default function Home({ navigation }) {
                             left={10}
                             backgroundColor='red'
                             width={115}
+                            paddingHorizontal={10}
+                            paddingVertical={10}
                         />
                     }
                 />

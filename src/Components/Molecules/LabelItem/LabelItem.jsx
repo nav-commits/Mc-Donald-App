@@ -7,6 +7,7 @@ export default function LabelItem({
     flexDirection,
     justifyContent,
     img,
+    elevation
 }) {
     return (
         <View
@@ -22,7 +23,7 @@ export default function LabelItem({
                 shadowOffset: { width: 2, height: 3 },
                 shadowOpacity: 0.8,
                 shadowRadius: 10,
-                elevation: 5,
+                elevation: elevation,
                 justifyContent: justifyContent,
             }}
         >

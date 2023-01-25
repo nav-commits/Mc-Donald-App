@@ -43,6 +43,8 @@ export default function PopupModal({ modalVisible, activeItem, icon, info }) {
                                 backgroundColor='white'
                                 width={150}
                                 onPress={() => navigation.navigate('Order')}
+                                paddingHorizontal={10}
+                                paddingVertical={10}
                             />
                             <View style={{ marginLeft: 10 }}>
                                 <Button
@@ -50,6 +52,8 @@ export default function PopupModal({ modalVisible, activeItem, icon, info }) {
                                     backgroundColor='#ffbc0d'
                                     width={150}
                                     onPress={() => navigation.navigate('Order')}
+                                    paddingHorizontal={10}
+                                    paddingVertical={10}
                                 />
                             </View>
                         </View>
