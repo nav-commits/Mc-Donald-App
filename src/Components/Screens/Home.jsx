@@ -1,15 +1,15 @@
 import { View, StatusBar, Image, ScrollView, StyleSheet } from 'react-native';
-import LabelContent from '../Molecules/LabelItem/LabelItem';
 import Title from '../Atoms/Title/Title';
 import PresentationCard from '../Molecules/PresentationCard/PresentationCard';
 import Button from '../Atoms/Button/Button';
+import LabelItem from '../Molecules/LabelItem/LabelItem';
 
 export default function Home({ navigation }) {
     return (
         <ScrollView style={styles.scrollView}>
             <View>
                 <StatusBar backgroundColor={'grey'} />
-                <LabelContent
+                <LabelItem
                     content={
                         <Image
                             source={require('../../../assets/McDonald.png')}
