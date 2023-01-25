@@ -13,7 +13,8 @@ export default function LabelContent({dataContent}) {
                     justifyContent='space-between'
                     flexDirection='row'
                     icon={<Icon name={item.icon} size={25} style={{ paddingTop: 20 }} />}
-                    img={<Image source={{ uri: item.img }} style={{ width: 45, height: 35 }} />}
+                     img={<Image source={{ uri: item.img }} style={{ width: 45, height: 35 }} />}
+                     elevation={5}
                 />
             ))}
         </View>

@@ -46,13 +46,16 @@ export default function RewardsAndOffers() {
                             backgroundColor='#ffbc0d'
                             width={120}
                             onPress={() => navigation.navigate('Order')}
+                            paddingHorizontal={10}
+                            paddingVertical={10}
                         />
                         <Button
                             title='Learn More'
                             marginLeft={10}
                             backgroundColor='white'
                             width={90}
-                            border='1px solid black'
+                            paddingHorizontal={10}
+                            paddingVertical={10}
                         />
                     </View>
                 }
@@ -60,3 +63,4 @@ export default function RewardsAndOffers() {
         </View>
     );
 }
+
