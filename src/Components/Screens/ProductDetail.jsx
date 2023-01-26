@@ -1,62 +1,27 @@
-import { Text, StyleSheet, ScrollView, FlatList, View } from 'react-native';
+import { Text, StyleSheet, ScrollView, View } from 'react-native';
 import ProductDetailContent from '../Organisms/ProductDetailContent/ProductDetailContent';
 import React, { useRef } from 'react';
-
+import TabContent from '../Organisms/TabContent/TabContent';
 export default function ProductDetail({ route }) {
-    const ref = useRef()
-    const { dataContent } = route.params;
-    const { type } = route.params;
+    const ref = useRef();
     const [activeItem, setActiveItem] = React.useState(0);
     const onPressHandler = (item) => {
         if (item === 0) {
-            ref.current.scrollTo({ x: 0, y: 0, animated: true })
+            ref.current.scrollTo({ x: 0, y: 0, animated: true });
             setActiveItem(item);
-        }
-        else if (item === 1) {
-            ref.current.scrollTo({ x: 0, y: 650, animated: true })
+        } else if (item === 1) {
+            ref.current.scrollTo({ x: 0, y: 650, animated: true });
             setActiveItem(item);
-        }
-        else if (item === 2) {
-            ref.current.scrollTo({ x: 0, y: 1700, animated: true })
+        } else if (item === 2) {
+            ref.current.scrollTo({ x: 0, y: 1700, animated: true });
             setActiveItem(item);
         }
     };
+    const { dataContent } = route.params;
+    const { type } = route.params;
     return (
         <View>
-            <FlatList
-                style={styles.listStyle}
-                keyExtractor={(key) => {
-                    return key;
-                }}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                data={type}
-                renderItem={({ item, index }) => {
-                    return (
-                        <View
-                            style={{
-                                backgroundColor: 'white',
-                                paddingLeft: 20,
-                            }}
-                        >
-
-                            <Text
-                                onPress={() => onPressHandler(index)}
-                                style={{
-                                    paddingLeft: 5,
-                                    fontWeight: index === activeItem ? 'bold' : '',
-                                    borderBottomWidth: index === activeItem ? 4 : null,
-                                    borderBottomColor: index === activeItem ? '#ffbc0d' : '',
-                                    paddingBottom: 5
-                                }}
-                            >
-                                {item}
-                            </Text>
-
-                        </View>
-                    );
-                }}
-            />
+            <TabContent type={type} activeItem={activeItem} onPress={onPressHandler} />
             <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView} ref={ref}>
                 <Text style={styles.calorieContent}>
                     Calories do not reflect customization or additional ingredients. Adults and
