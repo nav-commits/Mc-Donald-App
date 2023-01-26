@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Image } from 'react-native';
-export default function MenuItem({ title, price, cal, img }) {
+export default function MenuItem({ title, price, cal, img, onPress }) {
     return (
         <View style={{ paddingLeft: 10 }}>
             <View style={styles.container}>
@@ -7,6 +7,7 @@ export default function MenuItem({ title, price, cal, img }) {
                     source={{ uri: img }}
                     resizeMode='contain'
                     style={{ width: 110, height: 90, borderRadius: 5 }}
+                    onPress={onPress}
                 />
             </View>
             <Text style={styles.title}>{title}</Text>

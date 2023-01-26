@@ -6,6 +6,7 @@ import {
     ScrollView,
     Image,
     TouchableOpacity,
+    TouchableWithoutFeedback,
 } from 'react-native';
 
 import Title from '../Atoms/Title/Title';
@@ -24,16 +25,22 @@ import LabelItem from '../Molecules/LabelItem/LabelItem';
 
 export default function Order() {
     const navigation = useNavigation();
+    const burgerTitles = Burgers.map((title) => title.burgerTitle);
+    const breakfastSandwichTitles = BreakfastSandwiches.map((title) => title.burgerTitle);
+    const breakfastSandwichTitlesFiltered = breakfastSandwichTitles.filter((v) => v !== undefined);
+    const burgerTitleFiltered = burgerTitles.filter((v) => v !== undefined);
     const onPress = (title) => {
         if (title === 'Burgers') {
             navigation.navigate('ProductDetail', {
                 dataContent: Burgers,
                 name: 'Burgers',
+                type: burgerTitleFiltered,
             });
         } else if (title === 'Breakfast Sandwiches') {
             navigation.navigate('ProductDetail', {
                 dataContent: BreakfastSandwiches,
                 name: 'Breakfast Sandwiches',
+                type: breakfastSandwichTitlesFiltered,
             });
         }
     };
@@ -80,38 +87,40 @@ export default function Order() {
                 data={BreakfastSandwiches}
                 renderItem={({ item }) => {
                     return (
-                        <TouchableOpacity onPress={() => onPressHandler(item)}>
-                            <MenuItem
-                                title={item.title}
-                                price={item.standardPrice.price}
-                                cal={item.standardPrice.cal}
-                                img={item.img}
-                            />
-                            <PopupModal
-                                modalVisible={modalVisible}
-                                setModalVisible={setModalVisible}
-                                activeItem={activeItem}
-                                icon={
-                                    <Icon
-                                        name={'close'}
-                                        size={25}
-                                        style={{ paddingTop: 5 }}
-                                        onPress={() => {
-                                            setModalVisible(!modalVisible);
-                                        }}
-                                    />
-                                }
-                                info={
-                                    <Text>
-                                        Calories do not reflect customization or additional
-                                        ingredients. Adults and youth (ages 13 and older) need an
-                                        average of 2,000 calories a day, and children (ages 4 to 12)
-                                        need an average of 1,500 calories a day. However, individual
-                                        needs vary.
-                                    </Text>
-                                }
-                            />
-                        </TouchableOpacity>
+                        <TouchableWithoutFeedback onPress={() => onPressHandler(item)}>
+                            <View>
+                                <MenuItem
+                                    title={item.title}
+                                    price={item.standardPrice.price}
+                                    cal={item.standardPrice.cal}
+                                    img={item.img}
+                                />
+                                <PopupModal
+                                    modalVisible={modalVisible}
+                                    setModalVisible={setModalVisible}
+                                    activeItem={activeItem}
+                                    icon={
+                                        <Icon
+                                            name={'close'}
+                                            size={25}
+                                            style={{ paddingTop: 5 }}
+                                            onPress={() => {
+                                                setModalVisible(!modalVisible);
+                                            }}
+                                        />
+                                    }
+                                    info={
+                                        <Text>
+                                            Calories do not reflect customization or additional
+                                            ingredients. Adults and youth (ages 13 and older) need
+                                            an average of 2,000 calories a day, and children (ages 4
+                                            to 12) need an average of 1,500 calories a day. However,
+                                            individual needs vary.
+                                        </Text>
+                                    }
+                                />
+                            </View>
+                        </TouchableWithoutFeedback>
                     );
                 }}
             />
@@ -133,38 +142,40 @@ export default function Order() {
                 data={Burgers}
                 renderItem={({ item }) => {
                     return (
-                        <TouchableOpacity onPress={() => onPressHandler(item)}>
-                            <MenuItem
-                                title={item.title}
-                                price={item.standardPrice.price}
-                                cal={item.standardPrice.cal}
-                                img={item.img}
-                            />
-                            <PopupModal
-                                modalVisible={modalVisible}
-                                setModalVisible={setModalVisible}
-                                activeItem={activeItem}
-                                icon={
-                                    <Icon
-                                        name={'close'}
-                                        size={25}
-                                        style={{ paddingTop: 5 }}
-                                        onPress={() => {
-                                            setModalVisible(!modalVisible);
-                                        }}
-                                    />
-                                }
-                                info={
-                                    <Text>
-                                        Calories do not reflect customization or additional
-                                        ingredients. Adults and youth (ages 13 and older) need an
-                                        average of 2,000 calories a day, and children (ages 4 to 12)
-                                        need an average of 1,500 calories a day. However, individual
-                                        needs vary.
-                                    </Text>
-                                }
-                            />
-                        </TouchableOpacity>
+                        <TouchableWithoutFeedback onPress={() => onPressHandler(item)}>
+                            <View>
+                                <MenuItem
+                                    title={item.title}
+                                    price={item.standardPrice.price}
+                                    cal={item.standardPrice.cal}
+                                    img={item.img}
+                                />
+                                <PopupModal
+                                    modalVisible={modalVisible}
+                                    setModalVisible={setModalVisible}
+                                    activeItem={activeItem}
+                                    icon={
+                                        <Icon
+                                            name={'close'}
+                                            size={25}
+                                            style={{ paddingTop: 5 }}
+                                            onPress={() => {
+                                                setModalVisible(!modalVisible);
+                                            }}
+                                        />
+                                    }
+                                    info={
+                                        <Text>
+                                            Calories do not reflect customization or additional
+                                            ingredients. Adults and youth (ages 13 and older) need
+                                            an average of 2,000 calories a day, and children (ages 4
+                                            to 12) need an average of 1,500 calories a day. However,
+                                            individual needs vary.
+                                        </Text>
+                                    }
+                                />
+                            </View>
+                        </TouchableWithoutFeedback>
                     );
                 }}
             />
