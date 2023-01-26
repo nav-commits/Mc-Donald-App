@@ -1,21 +1,60 @@
-import { Text, StyleSheet, ScrollView} from 'react-native';
+import { Text, StyleSheet, ScrollView, FlatList, View } from 'react-native';
 import ProductDetailContent from '../Organisms/ProductDetailContent/ProductDetailContent';
 import React, { useRef } from 'react';
 
 export default function ProductDetail({ route }) {
     const { dataContent } = route.params;
+    const { type } = route.params;
+    const [activeItem, setActiveItem] = React.useState(0);
+    const onPressHandler = (item) => {
+        setActiveItem(item);
+    };
     return (
-
-        <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
-            <Text style={styles.calorieContent}>
-                Calories do not reflect customization or additional
-                ingredients. Adults and youth (ages 13 and older) need an
-                average of 2,000 calories a day, and children (ages 4 to 12)
-                need an average of 1,500 calories a day. However, individual
-                needs vary
-            </Text>
-            <ProductDetailContent dataContent={dataContent} />
-        </ScrollView>
+        <View>
+            <FlatList
+                style={styles.listStyle}
+                keyExtractor={(key) => {
+                    return key;
+                }}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                data={type}
+                renderItem={({ item, index }) => {
+                    return (
+                        <View
+                            style={{
+                                backgroundColor: 'white',
+                                paddingLeft: 20,
+                            }}
+                        >
+                           
+                                <Text
+                                    onPress={() => onPressHandler(index)}
+                                    style={{
+                                        paddingLeft: 5,
+                                        fontWeight: index === activeItem? 'bold' : '',
+                                        borderBottomWidth: index === activeItem ? 4 : null,
+                                        borderBottomColor: index === activeItem ? '#ffbc0d' : '',
+                                        paddingBottom: 5
+                                    }}
+                                >
+                                    {item}
+                                </Text>
+                           
+                        </View>
+                    );
+                }}
+            />
+            <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
+                <Text style={styles.calorieContent}>
+                    Calories do not reflect customization or additional ingredients. Adults and
+                    youth (ages 13 and older) need an average of 2,000 calories a day, and children
+                    (ages 4 to 12) need an average of 1,500 calories a day. However, individual
+                    needs vary
+                </Text>
+                <ProductDetailContent dataContent={dataContent} />
+            </ScrollView>
+        </View>
     );
 }
 
@@ -26,5 +65,10 @@ const styles = StyleSheet.create({
     },
     calorieContent: {
         padding: 15,
+    },
+    listStyle: {
+        textAlign: 'center',
+        margin: 5,
+        padding: 10,
     },
 });
