@@ -3,11 +3,23 @@ import ProductDetailContent from '../Organisms/ProductDetailContent/ProductDetai
 import React, { useRef } from 'react';
 
 export default function ProductDetail({ route }) {
+    const ref = useRef()
     const { dataContent } = route.params;
     const { type } = route.params;
     const [activeItem, setActiveItem] = React.useState(0);
     const onPressHandler = (item) => {
-        setActiveItem(item);
+        if (item === 0) {
+            ref.current.scrollTo({ x: 0, y: 0, animated: true })
+            setActiveItem(item);
+        }
+        else if (item === 1) {
+            ref.current.scrollTo({ x: 0, y: 650, animated: true })
+            setActiveItem(item);
+        }
+        else if (item === 2) {
+            ref.current.scrollTo({ x: 0, y: 1700, animated: true })
+            setActiveItem(item);
+        }
     };
     return (
         <View>
@@ -27,25 +39,25 @@ export default function ProductDetail({ route }) {
                                 paddingLeft: 20,
                             }}
                         >
-                           
-                                <Text
-                                    onPress={() => onPressHandler(index)}
-                                    style={{
-                                        paddingLeft: 5,
-                                        fontWeight: index === activeItem? 'bold' : '',
-                                        borderBottomWidth: index === activeItem ? 4 : null,
-                                        borderBottomColor: index === activeItem ? '#ffbc0d' : '',
-                                        paddingBottom: 5
-                                    }}
-                                >
-                                    {item}
-                                </Text>
-                           
+
+                            <Text
+                                onPress={() => onPressHandler(index)}
+                                style={{
+                                    paddingLeft: 5,
+                                    fontWeight: index === activeItem ? 'bold' : '',
+                                    borderBottomWidth: index === activeItem ? 4 : null,
+                                    borderBottomColor: index === activeItem ? '#ffbc0d' : '',
+                                    paddingBottom: 5
+                                }}
+                            >
+                                {item}
+                            </Text>
+
                         </View>
                     );
                 }}
             />
-            <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
+            <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView} ref={ref}>
                 <Text style={styles.calorieContent}>
                     Calories do not reflect customization or additional ingredients. Adults and
                     youth (ages 13 and older) need an average of 2,000 calories a day, and children
