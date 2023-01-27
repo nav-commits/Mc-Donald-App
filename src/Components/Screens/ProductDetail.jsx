@@ -9,25 +9,23 @@ export default function ProductDetail({ route }) {
         if (item === 0) {
             ref.current.scrollTo({ x: 0, y: 0, animated: true });
             setActiveItem(item);
+
         } else if (item === 1) {
-            ref.current.scrollTo({ x: 0, y: 550, animated: true });
+            ref.current.scrollTo({ x: 0, y: 500, animated: true });
             setActiveItem(item);
+
         } else if (item === 2) {
             ref.current.scrollTo({ x: 0, y: 1800, animated: true });
             setActiveItem(item);
         }
     };
-    const checkElementExist = (event) => {
-        if (event.nativeEvent.contentOffset.y === 650) {
-            console.log("got element")
-        }
-    }
+
     const { dataContent } = route.params;
     const { type } = route.params;
     return (
         <View>
             <TabContent type={type} activeItem={activeItem} onPress={onPressHandler} />
-            <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView} ref={ref} onScroll={checkElementExist}>
+            <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView} ref={ref}>
                 <Text style={styles.calorieContent}>
                     Calories do not reflect customization or additional ingredients. Adults and
                     youth (ages 13 and older) need an average of 2,000 calories a day, and children
