@@ -1,6 +1,5 @@
 import { StyleSheet, View, Text, FlatList } from 'react-native';
-
-export default function TabContent({ type, onPress, activeItem }) {
+export default function TabContent({ type, onPress, activeItem, isInView }) {
     return (
         <FlatList
             style={styles.listStyle}
@@ -23,9 +22,9 @@ export default function TabContent({ type, onPress, activeItem }) {
                             onPress={() => onPress(index)}
                             style={{
                                 paddingLeft: 5,
-                                fontWeight: index === activeItem ? 'bold' : '',
-                                borderBottomWidth: index === activeItem ? 4 : null,
-                                borderBottomColor: index === activeItem ? '#ffbc0d' : '',
+                                fontWeight: index === activeItem || isInView ? 'bold' : '',
+                                borderBottomWidth: index === activeItem || isInView ? 4 : null,
+                                borderBottomColor: index === activeItem || isInView ? '#ffbc0d' : '',
                                 paddingBottom: 5
                             }}
                         >

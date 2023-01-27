@@ -3,7 +3,7 @@ import PresentationCard from '../Molecules/PresentationCard/PresentationCard';
 import Button from '../Atoms/Button/Button';
 import Title from '../Atoms/Title/Title';
 import LabelItem from '../Molecules/LabelItem/LabelItem';
-export default function RewardsAndOffers() {
+export default function RewardsAndOffers({ navigation }) {
     return (
         <View>
             <LabelItem
