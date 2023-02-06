@@ -4,8 +4,6 @@ import {
     StyleSheet,
     FlatList,
     ScrollView,
-    Image,
-    TouchableOpacity,
     TouchableWithoutFeedback,
 } from 'react-native';
 
@@ -13,7 +11,7 @@ import Title from '../Atoms/Title/Title';
 import { BreakfastSandwiches } from '../../data/data.json';
 import { Burgers } from '../../data/data.json';
 import MenuItem from '../Molecules/MenuItem/MenuItem';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import MenuTitleSection from '../Molecules/MenuTitleSection/MenuTitleSection';
 import { dataContent } from '../../Utils/Labels';
