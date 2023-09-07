@@ -4,8 +4,6 @@ import BottomNavigation from './src/Components/Organisms/BottomNavigation/Bottom
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ProductDetail from './src/Components/Screens/ProductDetail';
 
-
-// create state in a context and as the value changes pass it down to product detail name, set the state inside function in orders page for the on press function
 const MyTheme = {
     ...DefaultTheme,
     colors: {

@@ -1,66 +1,69 @@
-import { View, Modal, Text, StyleSheet, Image } from 'react-native';
+import { View, Modal, Text, StyleSheet, Image, TouchableWithoutFeedback } from 'react-native';
 import Button from '../../Atoms/Button/Button';
 import { useNavigation } from '@react-navigation/native';
 export default function PopupModal({ modalVisible, activeItem, icon, info }) {
     const navigation = useNavigation();
+    const onClose = () => {};
     return (
-        <View style={styles.centeredView}>
-            <Modal animationType='slide' transparent={true} visible={modalVisible}>
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        {icon}
-                        {info}
-                        <Text style={styles.modalText}>{activeItem?.title}</Text>
-                        <View style={{ display: 'flex', flexDirection: 'row' }}>
-                            <Text>${activeItem?.standardPrice?.price}</Text>
-                            <Text style={{ paddingLeft: 10 }}>
-                                {activeItem?.standardPrice?.cal} cals
-                            </Text>
-                        </View>
+        <TouchableWithoutFeedback onPress={onClose}>
+            <View style={styles.centeredView}>
+                <Modal animationType='slide' transparent={true} visible={modalVisible}>
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            {icon}
+                            {info}
+                            <Text style={styles.modalText}>{activeItem?.title}</Text>
+                            <View style={{ display: 'flex', flexDirection: 'row' }}>
+                                <Text>${activeItem?.standardPrice?.price}</Text>
+                                <Text style={{ paddingLeft: 10 }}>
+                                    {activeItem?.standardPrice?.cal} cals
+                                </Text>
+                            </View>
 
-                        <View
-                            style={{
-                                flexDirection: 'row',
-                                justifyContent: 'center',
-                                display: 'flex',
-                            }}
-                        >
-                            <Image
-                                source={{ uri: activeItem?.img }}
-                                style={{ width: 205, height: 205 }}
-                            />
-                        </View>
-                        <View
-                            style={{
-                                flexDirection: 'row',
-                                justifyContent: 'center',
-                                display: 'flex',
-                                marginTop: 20
-                            }}
-                        >
-                            <Button
-                                title='Customize ingredients'
-                                backgroundColor='white'
-                                width={150}
-                                onPress={() => navigation.navigate('Order')}
-                                paddingHorizontal={10}
-                                paddingVertical={10}
-                            />
-                            <View style={{ marginLeft: 10 }}>
+                            <View
+                                style={{
+                                    flexDirection: 'row',
+                                    justifyContent: 'center',
+                                    display: 'flex',
+                                }}
+                            >
+                                <Image
+                                    source={{ uri: activeItem?.img }}
+                                    style={{ width: 205, height: 205 }}
+                                />
+                            </View>
+                            <View
+                                style={{
+                                    flexDirection: 'row',
+                                    justifyContent: 'center',
+                                    display: 'flex',
+                                    marginTop: 20,
+                                }}
+                            >
                                 <Button
-                                    title='Add to bag'
-                                    backgroundColor='#ffbc0d'
+                                    title='Customize ingredients'
+                                    backgroundColor='white'
                                     width={150}
                                     onPress={() => navigation.navigate('Order')}
                                     paddingHorizontal={10}
                                     paddingVertical={10}
                                 />
+                                <View style={{ marginLeft: 10 }}>
+                                    <Button
+                                        title='Add to bag'
+                                        backgroundColor='#ffbc0d'
+                                        width={150}
+                                        onPress={() => navigation.navigate('Order')}
+                                        paddingHorizontal={10}
+                                        paddingVertical={10}
+                                    />
+                                </View>
                             </View>
                         </View>
                     </View>
-                </View>
-            </Modal>
-        </View>
+                </Modal>
+            </View>
+        </TouchableWithoutFeedback>
     );
 }
 

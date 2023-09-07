@@ -7,7 +7,7 @@ export default function ProductDetailContent({ dataContent }) {
         <View>
             {dataContent.map((item, id) => (
                 <View key={id}>
-                    <Text style={styles.burgerTitle}> {item.burgerTitle}</Text>
+                    {item.burgerTitle && <Text style={styles.burgerTitle}> {item.burgerTitle}</Text> } 
                     {item.BurgerType?.map((burger, i) => (
                         <LabelItem
                             key={i}
@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: 'bold',
         paddingLeft: 10,
-        paddingTop: 5,
     },
     featured: {
         color: '#8B0000',
@@ -71,8 +70,9 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
     },
     burgerTitle: {
+        paddingTop: 15,
         paddingLeft: 10,
-        paddingBottom: 15,
+        paddingBottom: 12,
         fontSize: 24,
         fontWeight: 'bold',
     },

@@ -5,13 +5,13 @@ import Title from '../Atoms/Title/Title';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function Code() {
-    let codeNumber = Math.floor(Math.random() * 9000 + 1000)
-    let convertToString = codeNumber.toString()
+    let codeNumber = Math.floor(Math.random() * 9000 + 1000);
+    let convertToString = codeNumber.toString();
     const addSpaceNumbers = (num) => {
         let regexFind = num.match(/.{1,2}/g);
-        let joinNumber = regexFind.join(" ")
+        let joinNumber = regexFind.join(' ');
         return joinNumber;
-    }
+    };
     return (
         <View style={{ marginTop: 5 }}>
             <PresentationCard
@@ -66,7 +66,11 @@ export default function Code() {
                     <View>
                         <View style={{ height: 70, backgroundColor: '#ffbc0d', marginTop: 50 }}>
                             <Title title='Tell us about your code' size={15} textAlign='center' />
-                            <Title title={addSpaceNumbers(convertToString)} size={40} textAlign='center' />
+                            <Title
+                                title={addSpaceNumbers(convertToString)}
+                                size={40}
+                                textAlign='center'
+                            />
                         </View>
                         <View style={styles.scanCodeStyle}>
                             <Title title='Scan Code' paddingTop={10} size={20} textAlign='center' />
